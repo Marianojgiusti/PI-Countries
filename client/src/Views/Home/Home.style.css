@@ -1,0 +1,9 @@
+.homecontainer{
+    place-content: center;
+}
+
+
+.namecontainer{
+    border-radius: 15px;
+    background-image: url(https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/country-domain-map-t.jpg);
+}

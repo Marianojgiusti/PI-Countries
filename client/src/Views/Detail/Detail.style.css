@@ -1,0 +1,26 @@
+.p-img{
+width: 50px;
+height: 60px;
+}
+
+.container{
+    margin: auto;
+    height: 70vw;
+    width: 70vw;
+    flex-direction: column;
+    /* background-image: url("https://img.freepik.com/fotos-premium/bandera-todos-paises_670382-33634.jpg"); */
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+
+}
+
+
+.names-container{
+    text-shadow: black 0.1em 0.1em 0.2em;
+    place-content: center;
+    display: flex;
+    border-radius:5px;
+    color: aliceblue;
+}

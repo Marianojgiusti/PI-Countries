@@ -1,0 +1,12 @@
+.containernav{
+    display: flex;
+    justify-content:space-evenly;
+    border-radius: 15px;
+    background-color: black;
+}
+
+.inputcont{
+    height: 44px;
+    width: 100px;
+    border-radius: 5px;
+}
