@@ -20,9 +20,9 @@ export  const SortAlph =(props) => {
     <div>
         <label className='SortAlph'>Ordenar alfabeticamente</label>
         <select onChange={(e) => props.handlerSortAlph(e)}>
-            <option value="All">Al azar</option>
-            <option value="Asc">Ascendentemente</option>
-            <option value="Desc">Descendentemente</option>
+            <option value="All">All</option>
+            <option value="Asc">A - z</option>
+            <option value="Desc">Z - a</option>
         </select>
 
     </div>
@@ -30,16 +30,15 @@ export  const SortAlph =(props) => {
 };
 
 export  const FilterActivity = (props) =>{
-    
     return (
         <div>
             <label> Orden Por Actividad </label>
            { (!props.allActivities )
            ? <p> no se han creado</p>
            :<select onChange={(e) => props.handlerFilterActivity(e)}>
-                    <option value="All">Todos</option>
-                    {props.allActivities.map(el => (
-                    <option value={el.name} key={el.name}> {el.name}  </option> ))
+                    <option value="All">All</option>
+                    {props.allActivities.map(e => (
+                    <option value={e.name} key={e.name}> {e.name}  </option> ))
                     }
                 </select>
             }
@@ -56,8 +55,6 @@ export const Paginado = ({ countriesPerPage, countries, currentPage, onPageChang
             onPageChange(newPage);
         }
       };
-      
-
     return (
         <nav>
             <div className="paginado">
@@ -76,20 +73,12 @@ export const Paginado = ({ countriesPerPage, countries, currentPage, onPageChang
 };
 
 
-
-
-
-
-
-
-
-
 export  const FilterCountry = (props) => {
     return (
       <div>
         <label className='filtrarContienent'> Filtra por continente: </label>
              <select onChange={(e) => props.handlerFilterContinent(e)}>
-                      <option value="All">Todos</option>
+                      <option value="All">All</option>
                       <option value="Africa">Africa</option>
                       <option value="North America">North America</option>
                       <option value="South America">South America</option>

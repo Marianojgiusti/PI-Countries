@@ -13,16 +13,12 @@ import "./Search.style.css"
     function handleInputChange(e){
         e.preventDefault();
         setState(e.target.value)
-        console.log(state)
     }
-
     useEffect(() => {
         dispatch(getCountriesbyname(state))
         setCurrentPage(1)
-        
     },[state,setCurrentPage,dispatch])
-    // console.log('state')
-    // console.log(state)
+ 
 
   return (
     <div className='searchBar'>

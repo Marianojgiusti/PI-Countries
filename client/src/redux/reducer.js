@@ -26,7 +26,7 @@ const rootReducer = (state = initialState, action) => {
 
         case FILTER_ACTIVITY:
             if(action.payload==="All"){
-                const activities= state.allCountries.filter(country =>
+                const saveactivities= state.allCountries.filter(country =>
                     country.activities.some(activity =>
                         state.allActivities.some(allActivity =>
                                 activity.name.includes(allActivity.name)
@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
                         ));
                     return {
                     ...state,
-                    countries: activities
+                    countries: saveactivities
                     };
                 } else{
                     const selectedActivity = action.payload;

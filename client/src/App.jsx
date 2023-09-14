@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {Home, Landing, Form, Detail} from "./Views";
 import { Route, Routes, useLocation } from 'react-router-dom';
-import {NavBar} from './components/NavBar/NavBar';
-import { getActivities, getCountries } from './redux/actions';
+
 
 
 function App() {
