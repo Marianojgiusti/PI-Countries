@@ -1,77 +1,55 @@
 import CardsContainer from "../../components/CardsContainer/CardsContainer"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import  {getCountries, getActivities, filterCountryByContinent, filterActivity, sortCountryPob}  from "../../redux/actions"
-import NavBar from "../../components/NavBar/NavBar"
+import  {getCountries, getActivities, filterCountryByContinent, filterActivity, sortCountryPob, sortCountryAlph}  from "../../redux/actions"
+import {NavBar} from "../../components/NavBar/NavBar"
 import {SearchBar} from "../../components/SearchBar/SearchBar"
-import { FilterActivity, FilterCountry, Paginado, OrderPoblation } from "../../components/Utils/Utils"
+import { FilterActivity, FilterCountry, Paginado, OrderPoblation, SortAlph } from "../../components/Utils/Utils"
 import "./Home.style.css"
 
 
 const Home = () =>{
   const dispatch = useDispatch();
-
-  const allCountries = useSelector((state)=> state.allCountries)
+  const countries = useSelector((state)=> state.countries)
   const allActivities = useSelector((state) => state.allActivities)
 
-  const [currentPage, setCurrentPage] = useState(1);
+  
+  useEffect(()=>{
+    dispatch(getCountries()),
+    dispatch(getActivities());
+  },[])
 
-  const countriesPerPage = 10;
-
-  const [option , setOption] = useState('')
-
-
-  function handlerClick(e){
+  function handlerClickReset(e){
     e.preventDefault();
     dispatch(getCountries());
 }
-  useEffect(()=>{
-    dispatch(getCountries());
-    //return (() => {clearDetail()})
-  },[dispatch])
-
-  useEffect (() => {
-    dispatch(getActivities())
-},[dispatch])
-
+  const handlerSortAlph = (e) =>{
+    dispatch(sortCountryAlph(e.target.value)) 
+    console.log(e.target.value)
+  }
 const sortCountry = (e) =>{
   dispatch(sortCountryPob(e.target.value))
-  setOption(e.target.value)
   setCurrentPage(1)
 }
-let indexOfLastCountry;
-let indexOfFirstCountry;
-    if (currentPage === 1){
-        indexOfLastCountry = 9;
-        indexOfFirstCountry = 0
-        
-    }else{
-      indexOfFirstCountry = ((currentPage - 1) * 10) - 1
-      indexOfLastCountry = ((currentPage - 1) * 10) + 9
-    }
-    // indexOfLastCountry = currentPage * countriesPerPage; //20
-    // indexOfFirstCountry = indexOfLastCountry - countriesPerPage; //10
-    const currentCountries = allCountries.slice(
-      indexOfFirstCountry,
-      indexOfLastCountry
-    );
- 
-    const pages = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    }
+
+const [currentPage, setCurrentPage] = useState(1);
+const countriesPerPage = 10;
+const indexOfLastCountry = currentPage * countriesPerPage;
+const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
+
 
 const handlerFilterContinent = (e) =>{
-  dispatch(filterCountryByContinent(e.target.value))
+ dispatch(filterCountryByContinent(e.target.value)) 
+  console.log(e.target.value)
 }
 
 const handlerFilterActivity = (e) =>{
   e.preventDefault()
   dispatch(filterActivity(e.target.value))
-  setOption(e.target.value)
-  setCurrentPage(1)
-  console.log('filterCountriesAct '+e.target.value)
-}
 
+  setCurrentPage(1)
+}
 
 
 return(
@@ -79,19 +57,18 @@ return(
         <h1 className="namecontainer">Welcome!</h1>
         <NavBar />
         <SearchBar setCurrentPage={setCurrentPage}/>
-            <button onClick={e =>{handlerClick(e)}}>
-                volver a cargar todos los paises
+            <button className="buttonreset" onClick={e =>{handlerClickReset(e)}}>
+                Reset Countries
             </button>
             <div>
-                <OrderPoblation sortCountry={sortCountry}/>
-                <FilterCountry handlerFilterContinent={handlerFilterContinent}/>
-               <FilterActivity allActivities={allActivities} handlerFilterActivity = {handlerFilterActivity}/>
-               {/* <Paginado
-               countriesPerPage={countriesPerPage}
-               allCountries={allCountries.length}
-               pages={pages}
-               /> */}
-        <CardsContainer allCountries={allCountries}/>
+            <div className="divselectors">   
+            <OrderPoblation sortCountry={sortCountry}/>
+            <SortAlph handlerSortAlph={handlerSortAlph}/>
+            <FilterCountry handlerFilterContinent={handlerFilterContinent}/>
+            <FilterActivity allActivities={allActivities} handlerFilterActivity={handlerFilterActivity}/>
+              </div>
+            <CardsContainer  allCountries={currentCountries} />
+            <Paginado className="stylepaginado" countriesPerPage={countriesPerPage} countries={countries.length}  onPageChange={setCurrentPage} />
       </div>
        </div>
     )

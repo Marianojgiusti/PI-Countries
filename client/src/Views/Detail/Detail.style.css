@@ -3,17 +3,16 @@ width: 50px;
 height: 60px;
 }
 
-.container{
+.container {
     margin: auto;
     height: 70vw;
     width: 70vw;
     flex-direction: column;
-    /* background-image: url("https://img.freepik.com/fotos-premium/bandera-todos-paises_670382-33634.jpg"); */
+   background-color: rgb(143, 136, 127);
     border: 1px solid grey;
     border-radius: 5px;
     padding: 25px;
     cursor: pointer;
-
 }
 
 

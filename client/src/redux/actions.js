@@ -81,7 +81,15 @@ export const sortCountryPob =(order) =>{
         type:"SORT_COUNTRY_POB",
         payload: order
     }
+};
+export const SORT_COUNTRY_ALPH = "SORT_COUNTRY_ALPH" 
+export const sortCountryAlph = (order)=>{
+    return{
+        type:"SORT_COUNTRY_ALPH",
+        payload:order
+    }
 }
+
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const filterCountryByContinent = (continent) =>{
     return(
@@ -96,12 +104,5 @@ export const filterActivity = (activities) =>{
     return{
         type: "FILTER_ACTIVITY",
         payload: activities
-    }
-}
-export const FILTER_CONTINENT = "FILTER_CONTINENT"
-export const filterContinent= (continent) => {
-    return{
-        type:"FILTER_CONTINENT",
-        payload: continent
     }
 }

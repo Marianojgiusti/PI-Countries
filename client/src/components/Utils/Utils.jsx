@@ -1,13 +1,28 @@
 import React from 'react'
+import "./Utils.style.css"
 
+
+export const OrderPoblation = (props) => {
+    return (
+      <div>
+       <label className='OrdenPorPoblacion'> Orden Por poblacion </label>
+          <select onChange={(e)=> props.sortCountry(e)}>
+               <option value="All">Todos</option>
+               <option value="Asc">Menor</option>
+               <option value="Desc">Mayor</option>
+          </select>
+      </div>
+    )
+  }
+  
 export  const SortAlph =(props) => {
   return (
     <div>
         <label className='SortAlph'>Ordenar alfabeticamente</label>
-        <select onChange={(e) => props.handlerSortCountries(e)}>
+        <select onChange={(e) => props.handlerSortAlph(e)}>
             <option value="All">Al azar</option>
-            <option value="asc">Ascendentemente</option>
-            <option value="desc">Descendentemente</option>
+            <option value="Asc">Ascendentemente</option>
+            <option value="Desc">Descendentemente</option>
         </select>
 
     </div>
@@ -19,16 +34,12 @@ export  const FilterActivity = (props) =>{
     return (
         <div>
             <label> Orden Por Actividad </label>
-           { 
-                (props.allActivities.length === 0 )?<p> no se han creado</p>:
-
-                <select onChange={(e) => props.handlerFilterActivity(e)}>
+           { (!props.allActivities )
+           ? <p> no se han creado</p>
+           :<select onChange={(e) => props.handlerFilterActivity(e)}>
                     <option value="All">Todos</option>
-                    {
-                        props.allActivities?.map(el => (
-                            <option value={el.name} key={el.name}> {el.name}  </option>
-                            
-                        ))
+                    {props.allActivities.map(el => (
+                    <option value={el.name} key={el.name}> {el.name}  </option> ))
                     }
                 </select>
             }
@@ -36,25 +47,43 @@ export  const FilterActivity = (props) =>{
     )
 };
 
-export const Paginado =({countriesPerPage , allCountries, pages }) =>{
-    const pageNumbers = [];
-    for(let i = 1; i <= Math.ceil((allCountries + 1)/countriesPerPage); i++){
-        pageNumbers.push(i)
-    }
-    return(
+
+export const Paginado = ({ countriesPerPage, countries, currentPage, onPageChange }) => {
+    const totalPages = Math.ceil(countries / countriesPerPage);
+
+    const handlePageChange = (newPage) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            onPageChange(newPage);
+        }
+      };
+      
+
+    return (
         <nav>
-            <ul className="pages">
-                { pageNumbers &&
-                pageNumbers.map(number=> (
-                    <li className="number" key={number}>
-                        <a onClick={()=> pages(number)}>{number}</a>
-                    </li>
-                ))
-                }
-            </ul>
+            <div className="paginado">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
+                    <button
+                        className={`number ${pageNumber === currentPage ? 'active' : ''}`}
+                        key={pageNumber}
+                        onClick={() => handlePageChange(pageNumber)} >
+                        {pageNumber}
+                    </button>
+                ))}
+           
+            </div>
         </nav>
-    )
+    );
 };
+
+
+
+
+
+
+
+
+
+
 export  const FilterCountry = (props) => {
     return (
       <div>
@@ -72,16 +101,3 @@ export  const FilterCountry = (props) => {
       </div>
     )
   }
-export const OrderPoblation = (props) => {
-    return (
-      <div>
-       <label className='OrdenPorPoblacion'> Orden Por poblacion </label>
-          <select onChange={(e)=> props.sortCountry(e)}>
-               <option value="All">Todos</option>
-               <option value="Asc">Ascendente</option>
-               <option value="Des">Descendente</option>
-          </select>
-      </div>
-    )
-  }
-  

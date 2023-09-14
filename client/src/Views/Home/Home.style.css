@@ -7,3 +7,18 @@
     border-radius: 15px;
     background-image: url(https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/country-domain-map-t.jpg);
 }
+
+
+.divselectors{
+    margin-left: 0;
+}
+
+
+.buttonreset {
+    width: 10vw; /* Reducir el ancho del botón */
+    height: auto; /* Permitir que la altura se ajuste automáticamente al contenido */
+    position: absolute; /* Cambiar la posición a absoluta */
+    right: 10px; /* Ajustar la distancia desde el lado derecho de la pantalla */
+    top: 1px; /* Ajustar la distancia desde la parte superior de la pantalla */
+    background-color: rgb(37, 37, 37);
+}

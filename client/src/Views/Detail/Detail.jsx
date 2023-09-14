@@ -31,10 +31,10 @@ const Detail = () =>{
         <p className="names-container"> Population: {countryDetail.population}</p>
         <div>
       <h2 className="names-container">Actividades:</h2>
-      {countryDetail.activities ? (  // QUE ESTA PASANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+      {countryDetail.activities ? (
       <ul>
         {countryDetail.activities?.map((prop, id) => (
-          <li key= {id}>
+          <li className="names-container" key= {id}>
             Activity: {prop.name}, Difficulty: {prop.difficulty}, Duration: {prop.duration}, Season: {prop.season},                  
           </li>
         ))}
@@ -42,7 +42,6 @@ const Detail = () =>{
       ) : (
     <p>No hay actividades creadas.</p>
   )}
-  {console.log(countryDetail)}
     </div>
         <Link to='/home'>
          <button type="text">Go Back Home</button>

@@ -9,6 +9,7 @@ const {id, name, image, continent} = country
         <img className="p-img "src={image} />
         <p className='names-container'>{name}</p>
         <h3 className='names-container'> Continent: {continent}</h3>
+       
         </Link>
         </div>
     ) 

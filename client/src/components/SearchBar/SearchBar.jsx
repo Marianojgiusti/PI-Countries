@@ -1,7 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import  {getCountriesbyname}  from "../../redux/actions"
+import {getCountriesbyname}  from "../../redux/actions"
 import { useState , useEffect} from 'react';
+import "./Search.style.css"
+
 
 
  export const SearchBar = ({setCurrentPage}) => {
@@ -23,7 +25,7 @@ import { useState , useEffect} from 'react';
     // console.log(state)
 
   return (
-    <div className='serachBar'>
+    <div className='searchBar'>
         <input 
         onChange={(e) => handleInputChange(e)} 
         type="text" 
@@ -33,4 +35,3 @@ import { useState , useEffect} from 'react';
     </div>
   )
 }
-
