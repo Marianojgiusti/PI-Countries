@@ -54,7 +54,7 @@ const rootReducer = (state = initialState, action) => {
             if(action.payload==='All' ){
                 return {
                 ...state,
-                countries: state.countries,
+                countries: state.allCountries,
                 };
             } else{
                 const selectedContinent = action.payload;
@@ -74,7 +74,7 @@ const rootReducer = (state = initialState, action) => {
                     if(action.payload=== 'All' ){
                         return {
                         ...state,
-                        countries: state.countries,
+                        countries: state.allCountries,
                         }}
                     else if (action.payload === 'Asc') {
                             sortedPopulation.sort((a, b) => a.population-b.population);
@@ -92,7 +92,7 @@ const rootReducer = (state = initialState, action) => {
                 if(action.payload==='All' ){
                     return {
                     ...state,
-                    countries: state.countries,
+                    countries: state.allCountries,
                     }}
                 else if (action.payload === 'Asc') {
                         sortedCountries.sort((a, b) => a.name.localeCompare(b.name));

@@ -1,11 +1,10 @@
 import React from 'react'
-import "./Utils.style.css"
 
 
 export const OrderPoblation = (props) => {
     return (
       <div>
-       <label className='OrdenPorPoblacion'> Orden Por poblacion </label>
+       <label> Orden Por poblacion </label>
           <select onChange={(e)=> props.sortCountry(e)}>
                <option value="All">Todos</option>
                <option value="Asc">Menor</option>
@@ -18,7 +17,7 @@ export const OrderPoblation = (props) => {
 export  const SortAlph =(props) => {
   return (
     <div>
-        <label className='SortAlph'>Ordenar alfabeticamente</label>
+        <label >Ordenar alfabeticamente</label>
         <select onChange={(e) => props.handlerSortAlph(e)}>
             <option value="All">All</option>
             <option value="Asc">A - z</option>
@@ -57,15 +56,15 @@ export const Paginado = ({ countriesPerPage, countries, currentPage, onPageChang
       };
     return (
         <nav>
-            <div className="paginado">
+            <div >
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
-                    <button
-                        className={`number ${pageNumber === currentPage ? 'active' : ''}`}
+                    <button 
                         key={pageNumber}
                         onClick={() => handlePageChange(pageNumber)} >
                         {pageNumber}
                     </button>
                 ))}
+                
            
             </div>
         </nav>
@@ -90,3 +89,10 @@ export  const FilterCountry = (props) => {
       </div>
     )
   }
+
+
+
+  //todo validar formulario, desabilitar el boton, repeteir los paises no, eliminar el pais
+  //paginado css background pagina
+  //search bar que no salga error
+  //

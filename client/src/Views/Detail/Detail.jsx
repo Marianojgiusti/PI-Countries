@@ -13,7 +13,6 @@ const Detail = () =>{
     const dispatch = useDispatch()
     const countryDetail = useSelector(state => state.countryDetail)
 
-
     useEffect(()=>{
         dispatch(getDetail(id))
     }, [dispatch, id])

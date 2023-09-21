@@ -1,0 +1,11 @@
+
+.buttonremove {
+    margin: 0em;
+    padding:0.2em 0.4em;
+    background-color: #505050; 
+    color: #000000; 
+    border-radius: 20%; 
+    cursor: pointer;
+    font-size: 0.6em;
+  
+  }

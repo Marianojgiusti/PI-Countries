@@ -21,9 +21,11 @@ const Home = () =>{
 
   function handlerClickReset(e){
     e.preventDefault();
+    setCurrentPage(1)
     dispatch(getCountries());
 }
   const handlerSortAlph = (e) =>{
+    setCurrentPage(1)
     dispatch(sortCountryAlph(e.target.value)) 
     console.log(e.target.value)
   }
@@ -39,15 +41,16 @@ const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
 const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
 
 
+
 const handlerFilterContinent = (e) =>{
  dispatch(filterCountryByContinent(e.target.value)) 
-  console.log(e.target.value)
+ setCurrentPage(1)
+console.log(e.target.value)
 }
 
 const handlerFilterActivity = (e) =>{
   e.preventDefault()
   dispatch(filterActivity(e.target.value))
-
   setCurrentPage(1)
 }
 
@@ -75,12 +78,4 @@ return(
 } 
 
 export default Home
-       //* Filtro sobre el estado
-       
-       // const [filtered, setFiltered] = useState(allUsers);
-       // const [searchString, setSearchString] = useState("");
-       // function handleSubmit(e) {
-       // e.preventDefault();
-       // const filtered = allUsers.filter ((user) =>
-       // user.name.includes (searchString));
-       //setFiltered (filtered); }
+ 
