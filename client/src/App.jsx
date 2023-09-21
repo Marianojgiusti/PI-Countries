@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {Home, Landing, Form, Detail} from "./Views";
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { getCountries } from './redux/actions';
 
 
 
 function App() {
-// const location = useLocation()
-
+  // const location = useLocation()
+  
   return (
     <div className="App">
      {/* {location.pathname !== "/" && <NavBar/>} */}

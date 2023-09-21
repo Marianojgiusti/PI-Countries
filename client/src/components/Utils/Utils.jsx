@@ -1,4 +1,6 @@
 import React from 'react'
+import "./Utils.style.css"
+
 
 
 export const OrderPoblation = (props) => {
@@ -55,10 +57,11 @@ export const Paginado = ({ countriesPerPage, countries, currentPage, onPageChang
         }
       };
     return (
-        <nav>
+        <nav className='paginado'>
             <div >
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNumber) => (
                     <button 
+                        className={`number ${pageNumber === currentPage ? 'selected' : ''}`}
                         key={pageNumber}
                         onClick={() => handlePageChange(pageNumber)} >
                         {pageNumber}
@@ -91,8 +94,3 @@ export  const FilterCountry = (props) => {
   }
 
 
-
-  //todo validar formulario, desabilitar el boton, repeteir los paises no, eliminar el pais
-  //paginado css background pagina
-  //search bar que no salga error
-  //

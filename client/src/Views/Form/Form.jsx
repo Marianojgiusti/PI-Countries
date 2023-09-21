@@ -57,14 +57,7 @@ const Form = () => {
   }
 }
 
-  // const [selectedCountries, setSelectedCountries] = useState([]);
-  // const handlerSelectCountries = (e) => {
-  //   const selectedCountry = e.target.value;
-  //   setInput({ countries: selectedCountry })
-  //     if (!selectedCountries.includes(selectedCountry)) {
-  //       setSelectedCountries([...selectedCountries, selectedCountry]);
-  //     }
-  //   };
+
 
 
   function handleRemoveSelected(countryName) {
@@ -112,8 +105,8 @@ const Form = () => {
       errors.duration = 'inset a name from 1 to 24'
     } else if (!input.season) {
       errors.season = 'insert season'
-    // } else if (input.countries.length === 0) {
-    //   errors.countries = "insert country"
+    } else if (input.countries.length=== 0) {
+      errors.countries = "insert country"
     }
     return errors;
   }
@@ -129,7 +122,8 @@ const errorsExist =
   errors.name ||
   errors.difficulty ||
   errors.duration ||
-  errors.season ;
+  errors.season ||
+  input.countries.length === 0;
 
 
 
@@ -166,9 +160,9 @@ const errorsExist =
         <div>
           <label> Countries:
             <select value={input.countries} onChange={(e) => handlerSelect(e)}>
-              <option value="">Select the Countries</option>
+              <option value="" disabled>Select the Countries</option>
               {countries?.map((n) => (
-                <option key={n.id} value={n.name} name={n.name}>{n.name}</option>        //arreglo
+                <option key={n.id} value={n.name} disabled={input.countries.includes(n.name)}>{n.name}</option>        //arreglo
               ))}
             </select>
             <div>
@@ -176,11 +170,11 @@ const errorsExist =
                 <span key={selectedCountry}>
                   {selectedCountry}
                   <button className="buttonremove" onClick={() => handleRemoveSelected(selectedCountry)}>x</button>
+                  {input.countries.length === 0 &&<span>{errors.countries}</span>}
                 </span>
               ))}
             </div>
           </label>
-          {errors.countries && <span>{errors.countries}</span>}
         </div>
         <div>
           <button onClick={e => { handlerClickReset(e) }}>Clear</button>
