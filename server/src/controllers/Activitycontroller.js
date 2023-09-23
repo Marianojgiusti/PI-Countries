@@ -33,6 +33,7 @@ const createActivityController = async (name, difficulty, duration, season, coun
 
   return createactivity;
 }
-    
+     // CMASKDASKDHASKHDASL PRUEBA AKSJDHASKDHLASKJDHLASK EL LIDER LOCO
+     
 
         module.exports = { getAllActivitiesController, createActivityController}
