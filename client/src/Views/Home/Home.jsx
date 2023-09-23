@@ -12,11 +12,11 @@ const Home = () =>{
   const dispatch = useDispatch();
   const countries = useSelector((state)=> state.countries)
   const allActivities = useSelector((state) => state.allActivities)
-  const [noResults, setNoResults] = useState(false)
+
   useEffect(()=>{
     dispatch(getActivities())},[])
 
-  function handlerClickReset(e){
+  function handlerClickReset(){
     setCurrentPage(1)
     dispatch(getCountries());
 }
@@ -64,8 +64,7 @@ return(
             <FilterActivity allActivities={allActivities} handlerFilterActivity={handlerFilterActivity}/>
               </div>
               <div>
-              <SearchBar setCurrentPage={setCurrentPage} setNoResults={setNoResults}/>
-              {noResults && <h1>País no encontrado</h1>}
+              <SearchBar setCurrentPage={setCurrentPage}/>
               </div>
             <CardsContainer allCountries={currentCountries} />
             <Paginado className="stylepaginado" countriesPerPage={countriesPerPage} countries={countries.length}  onPageChange={setCurrentPage} />
